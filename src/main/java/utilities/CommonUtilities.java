@@ -1,10 +1,10 @@
 package utilities;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
-
-import javax.mail.Message;
+import java.util.Properties;
 
 import org.jsoup.Jsoup;
 import org.openqa.selenium.OutputType;
@@ -12,7 +12,22 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
+import jakarta.mail.Message;
+
 public class CommonUtilities {
+
+	public static Properties loadPropertiesFiles() {
+		Properties prop = new Properties();
+		try {
+			FileReader fr = new FileReader(
+					System.getProperty("user.dir") + "\\src\\test\\resources\\projectdata.properties");
+			prop.load(fr);
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	   return prop;
+	}
 
 	 public static String generateBrandNewEmail() {
 	        Date date = new Date();

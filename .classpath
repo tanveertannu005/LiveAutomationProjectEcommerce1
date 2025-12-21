@@ -13,9 +13,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
 		<attributes>
-			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -84,42 +89,6 @@
 	<classpathentry kind="lib" path="D:/Selenium latest Jars/lib/opentelemetry-sdk-metrics-1.28.0.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium latest Jars/lib/opentelemetry-sdk-trace-1.28.0.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium latest Jars/lib/opentelemetry-semconv-1.28.0-alpha.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanveer/.m2/repository/org/jsoup/jsoup/1.14.2/jsoup-1.14.2.jar" sourcepath="C:/Users/Tanveer/.m2/repository/org/jsoup/jsoup/1.14.2/jsoup-1.14.2-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.jsoup"/>
-			<attribute name="maven.artifactId" value="jsoup"/>
-			<attribute name="maven.version" value="1.14.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tanveer/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar" sourcepath="C:/Users/Tanveer/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.sun.mail"/>
-			<attribute name="maven.artifactId" value="mailapi"/>
-			<attribute name="maven.version" value="1.6.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Tanveer/Downloads/ashot-1.5.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanveer/.m2/repository/io/github/bonigarcia/webdrivermanager/5.7.0/webdrivermanager-5.7.0.jar" sourcepath="C:/Users/Tanveer/.m2/repository/io/github/bonigarcia/webdrivermanager/5.7.0/webdrivermanager-5.7.0-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="io.github.bonigarcia"/>
-			<attribute name="maven.artifactId" value="webdrivermanager"/>
-			<attribute name="maven.version" value="5.7.0"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tanveer/.m2/repository/org/seleniumhq/selenium/selenium-opera-driver/4.0.0-alpha-7/selenium-opera-driver-4.0.0-alpha-7.jar" sourcepath="C:/Users/Tanveer/.m2/repository/org/seleniumhq/selenium/selenium-opera-driver/4.0.0-alpha-7/selenium-opera-driver-4.0.0-alpha-7-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.seleniumhq.selenium"/>
-			<attribute name="maven.artifactId" value="selenium-opera-driver"/>
-			<attribute name="maven.version" value="4.0.0-alpha-7"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

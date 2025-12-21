@@ -5,15 +5,16 @@
     <classes>
       <class name="tests.Register">
         <methods>
-          <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
+          <include name="VerifyRegisterAccountfunctionalityinallthesupportedenvironments"/>
           <include name="VerifyRegisteringanAccountbyusingtheKeyboardkeys"/>
           <include name="verifyUIofRegisterAccountPage"/>
           <include name="teardown"/>
-          <include name="VerifywhethertheMandatoryfieldsintheRegisterAccountpagearenotacceptingonlyspaces"/>
-          <include name="setup"/>
-          <include name="VerifyTheDetailsThatAreProvidedWhileRegisteringAnAccountAreStoredInTheDatabase"/>
+          <include name="VerifyRegisteringanAccountByProvidinganinvalidEmailAddressintotheEMailField"/>
           <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
+          <include name="VerifyTheDetailsThatAreProvidedWhileRegisteringAnAccountAreStoredInTheDatabase"/>
+          <include name="setup"/>
           <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
+          <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
           <include name="VerifyHeightWidthNumberOfCharacters"/>
         </methods>
       </class> <!-- tests.Register -->
