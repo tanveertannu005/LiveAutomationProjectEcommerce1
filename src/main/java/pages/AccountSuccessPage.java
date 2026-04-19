@@ -31,20 +31,23 @@ public class AccountSuccessPage extends RootPage {
 		
 		
 		public String getAccountCreatedHeading() {
-		    return accountCreatedHeading.getText();
+		return	elementUtilities.getElementText(accountCreatedHeading);
+		   
 		}
 
 		
 		public MyAccountPage ContinuePage() {
-			ContinueSuccessPage.click();
+			elementUtilities.ClickOnElement(ContinueSuccessPage);	
 			return new MyAccountPage(driver);
 		}
 		
 		public String  getContent() {
-			return accountsuccesspagecontent.getText();
+		return	elementUtilities.getElementText( accountsuccesspagecontent);
+			
 		}
 		
 		public boolean isUserLoggedIn() {
-			return LogoutOption.isDisplayed();
+			return elementUtilities.IsElementDisplayed(LogoutOption);
+			
 		}
 }

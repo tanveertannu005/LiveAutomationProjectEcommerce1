@@ -1,6 +1,9 @@
 package pages;
 
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.PublicEncryptionKey;
+import java.time.Duration;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,19 +18,19 @@ import utilities.ElementUtilities;
 public class HeaderOptions extends RootPage {
 
 	WebDriver driver;
-	ElementUtilities elementUtilities;
+	
 	
 	public HeaderOptions(WebDriver driver) {
 		super(driver);
 		this.driver=driver;
-		elementUtilities=new ElementUtilities(driver);
+		
 		PageFactory.initElements( driver,this);
 	}
 	
 	@FindBy(xpath = "//span[text()='My Account']")
 	private WebElement MyAccountDropMenu;
 	
-	@FindBy(linkText = "Register")
+	@FindBy(xpath =   "//a[text()='Register']")
 	private WebElement RegisterOption; 
 	
 	@FindBy(linkText = "Login")
@@ -63,65 +66,66 @@ public class HeaderOptions extends RootPage {
 	
 	
 	public SearchPage ClickOnSearchButton() {
-		SearchButton.click();
+		elementUtilities.ClickOnElement(SearchButton);;
 		return new SearchPage(driver);
 	}
 	
 	public HomePage SelectLogo() {
-		Logo.click();
+		elementUtilities.ClickOnElement(Logo);
 		return new HomePage(driver);
 	}
 	
 	public ShoppingCartPage SelectCheckOutOption() {
-		CheckoutOption.click();
+		elementUtilities.ClickOnElement(CheckoutHeaderIcon);
 		return new ShoppingCartPage(driver);
 	}
 	
 	public ShoppingCartPage SelectCheckoutHeaderIcon() {
-		CheckoutHeaderIcon.click();
+		elementUtilities.ClickOnElement(CheckoutHeaderIcon);
 		return new ShoppingCartPage(driver);
 	}
 	
 	public ShoppingCartPage SelectShoppingCartOption() {
-		ShoppingCartHeaderOption.click();
+		elementUtilities.ClickOnElement(ShopingCartHeaderIcon);
 		return new ShoppingCartPage(driver);
 	}
 	
 	public ShoppingCartPage selectShopingCartIcon() {
-		ShopingCartHeaderIcon.click();
+		elementUtilities.ClickOnElement(ShopingCartHeaderIcon);
 		return new ShoppingCartPage(driver);
 	}
 	
 	public LoginPage SelectWishListOption() {
-		WishlistHeaderOption.click();
+		elementUtilities.ClickOnElement(WishlistHeaderOption);
 		return new LoginPage(driver);
 	}
 	
 	public LoginPage SelectHeartIconOption() {
-		HeartIconOptions.click();
+		elementUtilities.ClickOnElement(HeartIconOptions);
 		return new LoginPage(driver);
 	}
 	
 	public ContactUsPage SelectPhoneIcon() {
-		PhoneIcon.click();
+		elementUtilities.ClickOnElement(PhoneIcon);
 		return new ContactUsPage(driver);
 	}
 	
 	public LoginPage SelectLoginOption() {
-		Loginoption.click();
+		elementUtilities.ClickOnElement(Loginoption);
 		return new LoginPage(driver);
 	}
-	
-	
-public void ClickOnMyAccountDropMenu() {
-		MyAccountDropMenu.click();
-	}		
-		public RegisterPage SelectOnRegisterOption() {
-			RegisterOption.click();
-			return new RegisterPage(driver);
+	public void ClickOnMyAccountDropMenu() {
+		elementUtilities.ClickOnElement(MyAccountDropMenu);
 			
-	
+		}		
+			public RegisterPage SelectOnRegisterOption() {
+				elementUtilities.ClickOnElement(RegisterOption);
+				return new RegisterPage(driver);
+				
 		
-	}
+			
+		}
+	
+
 		
 }

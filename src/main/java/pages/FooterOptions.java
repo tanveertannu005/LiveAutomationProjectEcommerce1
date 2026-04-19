@@ -55,7 +55,7 @@ public class FooterOptions extends RootPage {
 	@FindBy(xpath = "//footer//a[text()='Order History']")
 	private WebElement orderHistoryPage;
 	
-	@FindBy(xpath = "//footer//a[text()='Wish List0']")
+	@FindBy(xpath = "//footer//a[text()='Wish List']")
 	private WebElement WishlistPage;
 	
 	@FindBy(xpath = "//footer//a[text()='Newsletter']")
@@ -63,85 +63,85 @@ public class FooterOptions extends RootPage {
 	
 	
 	public LoginPage SelectNewsletterPage() {
-		newsletterpage.click();
+		elementUtilities.ClickOnElement(newsletterpage);
 		return new LoginPage(driver);
 	}
 	
 	
 	
 	public LoginPage SelectWishListPage() {
-		WishlistPage.click();
+		elementUtilities.ClickOnElement(WishlistPage);
 		return new LoginPage(driver);
 	}
 	
 	
 	public LoginPage SelectorderHistoryPage() {
-		orderHistoryPage.click();
+		elementUtilities.ClickOnElement(orderHistoryPage);
 		return new LoginPage(driver);
 	}
 	
 	
 	public LoginPage SelectMyaccountPage() {
-		MyaccountPage.click();
+		elementUtilities.ClickOnElement(MyaccountPage);
 		return new LoginPage(driver);
 	}
 	
 	public SpecialOffersPage SelectSpecialOffersPage() {
-		SpecialOffersPage.click();
+		elementUtilities.ClickOnElement(SpecialOffersPage);
 		return new SpecialOffersPage(driver);
 	}
 	
 	
 	
 	public AffiliatePrograPage SelectaffiliateOption() {
-		affiliatePage.click();
+		elementUtilities.ClickOnElement(affiliatePage);
 		return new AffiliatePrograPage(driver);
 	}
 	
 	public GiftCertificatesPage SelectGiftCertificatesOption() {
-		GiftCertificatesPage.click();
+		elementUtilities.ClickOnElement(GiftCertificatesPage);
 		return new GiftCertificatesPage(driver);
 	}
 	
 	
 	public BrandsPage SelectBrandsPageOption() {
-		brandspage.click();
+		elementUtilities.ClickOnElement(brandspage);
 		return new BrandsPage(driver);
 	}
 	
 	public SiteMappage SelectSiteMapPage() {
-		sitemapPage.click();
+		elementUtilities.ClickOnElement(sitemapPage);
 		return new SiteMappage(driver);
 	}
 	
 	public ProductReturnsPage SelectProductReturnsPage() {
-		ReturnsPage.click();
+		elementUtilities.ClickOnElement(ReturnsPage);
 		return new ProductReturnsPage(driver);
 	}
 	
 	public ContactUsPage SelectcontactUsPage() {
-		contactUsPage.click();
+		elementUtilities.ClickOnElement(contactUsPage);
 		return new ContactUsPage(driver);
 	}
 	
 	public TermsandConditionsPage SelectTermsConditionsOption(){
-		TermsAndConditionsOption.click();
+		elementUtilities.ClickOnElement(TermsAndConditionsOption);
 		return new TermsandConditionsPage(driver);
 	}
 	
 	
 	public Privacypolicypage SelectPrivacyPolicyOption() {
-		privacypolicyoption.click();
+		elementUtilities.ClickOnElement(privacypolicyoption);
 		return new Privacypolicypage(driver);
 	}
 	
 	public DeliveryInformationPage SelectDeliveryInformationOpton() {
-		DeliveryInformationOption.click();
+		elementUtilities.ClickOnElement(DeliveryInformationOption);
 		return new DeliveryInformationPage(driver);
 	}
 	
 	public AboutUspage SelectAboutUsoption() {
-		aboutusOption.click();
+		elementUtilities.ClickOnElement(aboutusOption);
 		return new AboutUspage(driver);
 		
 	}

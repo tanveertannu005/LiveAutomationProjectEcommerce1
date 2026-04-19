@@ -94,7 +94,7 @@ public class RegisterPage extends RootPage {
 	private WebElement LoginPageOption;
 	
 	public LoginPage SelectLoginPageOption() {
-		LoginPageOption.click();
+		elementUtilities.ClickOnElement(LoginPageOption);
 		return new LoginPage(driver);
 	}
 	
@@ -103,16 +103,20 @@ public class RegisterPage extends RootPage {
 	}
 	
 	public String getPasswordConfirmFieldDomAttribute(String attributeName) {
-		return PasswordConfirmField.getDomAttribute(attributeName);
+		return elementUtilities.getelementDomAttribute(PasswordConfirmField, attributeName);
+		
 	}
 	
 	
 	public String getPasswordFieldDomAttribute(String attributeName) {
-		return PasswordField.getDomAttribute(attributeName);
+		return	elementUtilities.getelementDomAttribute(PasswordField, attributeName);
+		 
 	}
 	
 	public boolean  isPrivacyPolicFieldisSelected() {
-		return   privacyPolicyField.isSelected();
+		return  elementUtilities.IsElementIsSelected(privacyPolicyField);
+		
+		
 	}
 	
 	public  WebElement getFirstNameFieldElement() {
@@ -166,6 +170,7 @@ public class RegisterPage extends RootPage {
 	}
 	
 	public String GetFirstNameFieldPlaceholderText() {
+		
 			return FirstNameField.getDomAttribute("placeholder");
 	}
 	public String GetLastNameFieldPlaceholderText() {
@@ -189,87 +194,104 @@ public class RegisterPage extends RootPage {
 	}
 	
 	public void ClearemailField() {
-		EmailField.clear();
+		elementUtilities.clearTextFromelement(EmailField);
+		
 	}
 	
 	
 	public boolean DidWeNavigateToRegisterPage() {
-	return	registerPageBreadCrumb.isDisplayed();
+		return elementUtilities.IsElementDisplayed(registerPageBreadCrumb);
+	
 	}
 	
 	public RegisterPage SelectRegisterPageBreadCrumbOption() {
-		registerPageBreadCrumb.click();
+		elementUtilities.ClickOnElement(registerPageBreadCrumb);
 		return new RegisterPage(driver);
 	}
 	
 	public String getPasswordConfirmationWarning() {
-	  return	passwordConfirmationWarning.getText();
+		return elementUtilities.getElementText(passwordConfirmationWarning);
+	 
 	} 
 	
 	public String getpageLevelWarning() {
-		return pageLevelWarning.getText();
+	return	elementUtilities.getElementText(pageLevelWarning);
+		
 	}
 	
 	public String GetPasswordWarning() {
-		return PasswordWarning.getText();
+		return elementUtilities.getElementText(PasswordWarning);
+		
 	}
 	
 	public String GetTelephoneWarning() {
-	    return telephoneWarning.getText();
+	return	elementUtilities.getElementText(telephoneWarning);
+	    
 	}
 	
 	
 	public String GetEmailWarninigMessage() {
-		return EmailWarning.getText();
+	return	elementUtilities.getElementText(EmailWarning);
+		
 	}
 
 	public String GetLastNameWarning() {
-		return lastNameWarning.getText();
+		return	elementUtilities.getElementText(lastNameWarning);
+		
 	}
 
 	public String getFirstNameWarning() {
-		return firstNameWarning.getText();
+		return	elementUtilities.getElementText(firstNameWarning);
+		
 	}
 
 	public void selectNewSeletterOption() {
-		isNewSeletterIsselected.click();
+		elementUtilities.ClickOnElement(isNewSeletterIsselected);
+		
 	}
 	
 	public void NoNewSeletterOptionOption() {
-		 IsNewsletterIsNotSelected.click();
+		elementUtilities.ClickOnElement(IsNewsletterIsNotSelected);
+		 
 	}
 
 	public void enterFirstName(String FirstNameText) {
-		FirstNameField.sendKeys(FirstNameText);
+		elementUtilities.enterTextIntoElement(FirstNameField, FirstNameText);
+		
 	}
 
 	public void enterLastName(String LastNameText) {
-		LastNameField.sendKeys(LastNameText);
+		elementUtilities.enterTextIntoElement(LastNameField, LastNameText);
+		
 	}
 
 	public void EnterEmail(String Email) {
-		EmailField.sendKeys(Email);
+		elementUtilities.enterTextIntoElement(EmailField, Email);
+		
 	}
 
 	public void EnterTelePhoneNumber(String Telephone) {
-		TelephoneField.sendKeys(Telephone);
-
+		elementUtilities.enterTextIntoElement(TelephoneField, Telephone);
+		
 	}
 
 	public void enterPasswordField(String PasswordText) {
-		PasswordField.sendKeys(PasswordText);
+		elementUtilities.enterTextIntoElement(PasswordField, PasswordText);
+		
 	}
 
 	public void enterPasswordConfirm(String ConfirmPassword) {
-		PasswordConfirmField.sendKeys(ConfirmPassword);
+		elementUtilities.enterTextIntoElement(PasswordConfirmField, ConfirmPassword);
+		
 	}
 
 	public void selectPrivacyPolicyField() {
-		privacyPolicyField.click();
+		elementUtilities.ClickOnElement(privacyPolicyField);
+		
 	}
 
 	public AccountSuccessPage clickOnContinueButton() {
-		ContinueButton.click();
+		elementUtilities.ClickOnElement(ContinueButton);
 		return new AccountSuccessPage(driver);
 
 	}

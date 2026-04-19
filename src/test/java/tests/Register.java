@@ -60,6 +60,7 @@ import pages.SiteMappage;
 import pages.SpecialOffersPage;
 import pages.TermsandConditionsPage;
 import utilities.CommonUtilities;
+import utilities.ElementUtilities;
 
 
 public class Register extends Base {
@@ -90,6 +91,7 @@ public class Register extends Base {
 	GiftCertificatesPage giftCertificatesPage;
 	AffiliatePrograPage affiliatePrograPage;
 	SpecialOffersPage specialOffersPage;
+
 	@AfterMethod
 
 	public void teardown() {
@@ -983,6 +985,7 @@ public class Register extends Base {
 		siteMappage = footerOptions.SelectSiteMapPage();
 		Assert.assertEquals(getPageTitle(siteMappage.getDriver()), "Site Map");
 		navigateBackInBrowser(siteMappage.getDriver());
+		
 		
 		 brandsPage = footerOptions.SelectBrandsPageOption();
 		Assert.assertEquals(getPageTitle(brandsPage.getDriver()), "Find Your Favorite Brand");

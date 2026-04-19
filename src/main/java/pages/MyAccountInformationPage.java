@@ -31,26 +31,31 @@ public class MyAccountInformationPage extends RootPage {
 		    private WebElement Telephonefield;
 		    
 		    public String getTelePhoneDomAttribute(String attributeName) {
-		        return Telephonefield.getDomAttribute(attributeName);
+		    return	elementUtilities.getelementDomAttribute(Telephonefield, attributeName);
+		        
 		    }
 		    
 		    
 		    public String getEmailDomAttribute(String attributeName) {
-		        return EmailField.getDomAttribute(attributeName);
+		    	return	elementUtilities.getelementDomAttribute(EmailField, attributeName);
+		        
 		    }
 		    
 		    
 		    public String getFirstnameDomAttribute(String attributeName) {
-		        return firstNameField.getDomAttribute(attributeName);
+		    return	elementUtilities.getelementDomAttribute(firstNameField, attributeName);
+		      
 		    }
 		    
 		    
 		    public String getlastnameDomAttribute(String attributeName) {
-		       return lastNameField.getDomAttribute(attributeName);
+		    	return	elementUtilities.getelementDomAttribute(lastNameField, attributeName);
+		        
 		    }
 		    
 		    public String getEmailnDomproperty(String propertyName) {
-			       return EmailField.getDomProperty(propertyName);
+		    return	elementUtilities.getElementDomProperty(EmailField, propertyName);
+			      
 			    }
 		}
 

@@ -19,19 +19,21 @@ public class MyAccountPage extends RootPage {
 		private WebElement SubscribeUnsubscribenewsletter;
 		
 		public  NewsleterPage ClickonSubscribeunsubscribeNewsletterOption() {
-			SubscribeUnsubscribenewsletter.click();
+			elementUtilities.ClickOnElement(SubscribeUnsubscribenewsletter);
 			return new NewsleterPage(driver);
 		}
 		@FindBy(linkText = "Edit your account information")
 		private WebElement edityourAccoutInformation;
 		
 		public boolean didwenavigateToMyAccountPage() {
-			return edityourAccoutInformation.isDisplayed();
+			return	elementUtilities.IsElementDisplayed(edityourAccoutInformation);
+			
+			 
 		}
 		
 		
 		public MyAccountInformationPage clickOnEdityourAccountInformation() {
-			edityourAccoutInformation.click();
+			elementUtilities.ClickOnElement(edityourAccoutInformation);
 			return new MyAccountInformationPage(driver);
 		}
 }

@@ -28,14 +28,18 @@ public class NewsleterPage extends RootPage {
 	
 	
 	public boolean NonewsletteroptionisInSelectedState() {
-		return NoNewsletterOption.isSelected();
+	return	elementUtilities.IsElementIsSelected(NoNewsletterOption);
+		
 	}
 	
 	public boolean YesnewsletteroptionisInSelectedState() {
-		return YesNewsletterOption.isSelected();
+	return	elementUtilities.IsElementIsSelected(YesNewsletterOption);
+		
 	}
 	
 	public boolean DidweNavigateToNewsletterOption() {
-		return newsletterBreadCrumb.isDisplayed();
+		return elementUtilities.IsElementDisplayedOnPage(NoNewsletterOption);
+	
+		
 	}
 }

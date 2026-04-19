@@ -20,7 +20,7 @@ public class LoginPage extends RootPage {
 	private WebElement ContinueButton;
 	
 	public RegisterPage ClickOnContinueButton() {
-		ContinueButton.click();
+		elementUtilities.ClickOnElement(ContinueButton);
 		return new RegisterPage(driver);
 	}
 	
