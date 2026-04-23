@@ -25,15 +25,38 @@ public class MyAccountPage extends RootPage {
 		@FindBy(linkText = "Edit your account information")
 		private WebElement edityourAccoutInformation;
 		
+		@FindBy(linkText =      "Change your password")
+		private WebElement changeYourPasswordLink;
+		
+		@FindBy(xpath = "//a[text()='Continue']")
+		private WebElement ContinueSuccessPage;
+		
+		
 		public boolean didwenavigateToMyAccountPage() {
 			return	elementUtilities.IsElementDisplayed(edityourAccoutInformation);
 			
 			 
 		}
-		
+		public MyAccountPage ContinuePage() {
+			elementUtilities.ClickOnElement(ContinueSuccessPage);	
+			return new MyAccountPage(driver);
+		}
 		
 		public MyAccountInformationPage clickOnEdityourAccountInformation() {
 			elementUtilities.ClickOnElement(edityourAccoutInformation);
 			return new MyAccountInformationPage(driver);
+		}
+
+
+		public HeaderOptions getHeaderoptions() {
+			
+			return new HeaderOptions(driver);
+		}
+		
+		
+		
+		public  PasswordChangePage ClickOnChangeYourPasswordlink() {
+			elementUtilities.ClickOnElement(changeYourPasswordLink);
+			return new PasswordChangePage(driver);
 		}
 }

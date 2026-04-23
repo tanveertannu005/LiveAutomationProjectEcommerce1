@@ -2,42 +2,60 @@ package utilities;
 
 import java.time.Duration;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtilities {
 
 	WebDriver driver;
+	Actions actions;
 
 	public ElementUtilities(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public Actions getActions(WebDriver driver) {
+		Actions actions = new Actions(driver);
+		return actions;
+	}
+
+	public void copyingTextUsingKeyboardKeys(WebDriver driver) {
+		actions = getActions(driver);
+		actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).keyDown(Keys.CONTROL).sendKeys("c").build()
+				.perform();
+
+	}
+
+	public void pasteTextIntoFieldUsingKeyboardkeys(WebElement element, WebDriver driver) {
+		actions = getActions(driver);
+		actions.click(element).keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).build().perform();
+	}
+
 	public void ClickOnElement(WebElement element) {
-	    WaitForElementToBeClickable(element);
-	    element.click();
+		WaitForElementToBeClickable(element);
+		element.click();
 	}
 
 	public String getElementText(WebElement element) {
 		String elementText = "";
-		if (IsElementDisplayedOnPage(element))
-		{
+		if (IsElementDisplayedOnPage(element)) {
 			elementText = element.getText();
 		}
 		return elementText;
 	}
 
 	public boolean IsElementDisplayedOnPage(WebElement element) {
-	    try {
-	        return element.isDisplayed();
-	    } catch (Exception e) {
-	        return false;
-	    }
+		try {
+			return element.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
 	}
-	
 
 	public boolean IsElementDisplayed(WebElement element) {
 		boolean b = false;
@@ -65,13 +83,13 @@ public class ElementUtilities {
 		}
 		return b;
 	}
-	
+
 	public String getElementCssvalue(WebElement element, String cssPropertyName) {
-		String value="";
-		value=element.getCssValue(cssPropertyName);
+		String value = "";
+		value = element.getCssValue(cssPropertyName);
 		return value;
 	}
-	
+
 	public void clearTextFromelement(WebElement element) {
 		if (IsElementDisplayedOnPage(element) && element.isEnabled()) {
 			element.clear();
@@ -79,20 +97,21 @@ public class ElementUtilities {
 	}
 
 	public void enterTextIntoElement(WebElement element, String text) {
-		if(IsElementDisplayedOnPage(element) && element.isEnabled()) {
+		if (IsElementDisplayedOnPage(element) && element.isEnabled()) {
 			clearTextFromelement(element);
 			element.sendKeys(text);
 		}
 	}
-	
+
 	public void WaitForElementToBeVisible(WebElement element) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.visibilityOf(element));
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+
 	public void WaitForElementToBeClickable(WebElement element) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(element));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-	
-	
+
 }

@@ -2,6 +2,7 @@ package utilities;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
@@ -27,6 +28,18 @@ public class CommonUtilities {
 
 		}
 	   return prop;
+	}
+	public static Properties storePropertiesFile(Properties prop) {
+		
+		try {
+			FileWriter fw = new FileWriter(
+					System.getProperty("user.dir") + "\\src\\test\\resources\\projectdata.properties");
+			prop.store(fw, "Updated properties file");
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+		return prop;
 	}
 
 	 public static String generateBrandNewEmail() {

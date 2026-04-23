@@ -61,6 +61,8 @@ public class RightColumOptions extends RootPage {
 	private WebElement Newsletteroption;
 	
 	
+	
+	
 	public LoginPage ClickOnNewsletterOption() {
 		elementUtilities.ClickOnElement(Newsletteroption);
 		return new LoginPage(driver);
@@ -134,5 +136,9 @@ public class RightColumOptions extends RootPage {
 	public RegisterPage ClickOnRegisterOption() {
 		elementUtilities.ClickOnElement(registerOption);
 		return new RegisterPage(driver);
+	}
+	public AccountLogoutPage clickOnLogoutOption() {
+		elementUtilities.ClickOnElement(logoutOption);
+		return new AccountLogoutPage(driver);
 	}
 }

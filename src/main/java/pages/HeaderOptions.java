@@ -64,6 +64,13 @@ public class HeaderOptions extends RootPage {
 	private WebElement SearchButton;
 	
 	
+	@FindBy(linkText = "Logout")
+	private WebElement Logoutoption;
+	
+	public LogoutPage SelectLogoutoption() {
+		elementUtilities.ClickOnElement(Logoutoption);
+		return new LogoutPage(driver);
+	}
 	
 	public SearchPage ClickOnSearchButton() {
 		elementUtilities.ClickOnElement(SearchButton);;
@@ -126,6 +133,9 @@ public class HeaderOptions extends RootPage {
 			
 		}
 	
-
+			public LoginPage navigateToLoginPage() {
+				 ClickOnMyAccountDropMenu();
+				return  SelectLoginOption();
+			}
 		
 }

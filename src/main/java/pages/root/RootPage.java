@@ -8,11 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pages.AccountSuccessPage;
+import pages.HeaderOptions;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyAccountPage;
 import pages.RightColumOptions;
 import utilities.ElementUtilities;
 import java.time.Duration;
+import java.util.Properties;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -21,6 +25,7 @@ public class RootPage {
 	WebDriver driver;
 	
 	public ElementUtilities elementUtilities;
+	public Properties prop;
 
 	public RootPage(WebDriver driver) {
 		this.driver = driver;
@@ -28,6 +33,12 @@ public class RootPage {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+	private WebElement pageLevelWarning;
+	
+	@FindBy(xpath ="//div[@class='alert alert-success alert-dismissible']" )
+	private WebElement getPageLevelSuccessMessage;
+	
 	@FindBy(xpath = "//div[@id='content']/h1")
 	private WebElement PageHeading;
 
@@ -36,6 +47,17 @@ public class RootPage {
 
 	@FindBy(linkText = "login page")
 	private WebElement AccountBreadCrumb;
+	
+	public String getpageLevelSuccessMessage() {
+		return	elementUtilities.getElementText(getPageLevelSuccessMessage);
+			
+		}
+	
+	public String getpageLevelWarning() {
+		return	elementUtilities.getElementText(pageLevelWarning);
+			
+		}
+	
 
 	public LoginPage SelectAccountBreadCrumbWithoutLogin() {
 		elementUtilities.ClickOnElement(AccountBreadCrumb);
@@ -60,6 +82,7 @@ public class RootPage {
 		return new HomePage(driver);
 	}
 
+	
 	public String GetPageHeading() {
 		return elementUtilities.getElementText(PageHeading);
 		
@@ -77,4 +100,8 @@ public class RootPage {
 		return new AccountSuccessPage(driver);
 	}
 
+	public HeaderOptions getHeaderoptions() {
+		
+		return new HeaderOptions(driver);
+	}
 }

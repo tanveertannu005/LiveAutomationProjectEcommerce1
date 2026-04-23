@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.Register">
+      <class name="tests.Login">
         <methods>
           <include name="teardown"/>
+          <include name="verifyLoginPageNavigations"/>
+          <include name="verifyPasswordIsnotVisibleInPageSource"/>
+          <include name="verifyLoginPageUi"/>
           <include name="setup"/>
-          <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
         </methods>
-      </class> <!-- tests.Register -->
+      </class> <!-- tests.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

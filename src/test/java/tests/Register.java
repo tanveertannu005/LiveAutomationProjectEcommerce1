@@ -65,63 +65,21 @@ import utilities.ElementUtilities;
 
 public class Register extends Base {
 	WebDriver driver;
-	String browserName;
-	Properties prop;
-	HeaderOptions headeroptions;
-	RegisterPage registerpage;
-	AccountSuccessPage accountsuccesspage;
-	MyAccountPage myaccountpage;
-	NewsleterPage newsletterPage;
-	LoginPage loginPage;
-	RightColumOptions rightcolumoptions;
-	MyAccountInformationPage myaccountInformationPage;
-	ContactUsPage contactUsPage;
-	ShoppingCartPage shoppingCartPage;
-	HomePage homePage;
-	SearchPage searchPage;
-	ForgottenPasswordPage forgottenPasswordPage;
-	FooterOptions footerOptions;
-	AboutUspage aboutUspage;
-	DeliveryInformationPage deliveryInformationPage;
-	Privacypolicypage privacypolicypage;
-	TermsandConditionsPage termsandConditionsPage;
-	ProductReturnsPage productReturnsPage;
-	SiteMappage siteMappage;
-	BrandsPage brandsPage;
-	GiftCertificatesPage giftCertificatesPage;
-	AffiliatePrograPage affiliatePrograPage;
-	SpecialOffersPage specialOffersPage;
-
+	
+	
 	@AfterMethod
 
 	public void teardown() {
-		if (driver != null) {
-			driver.quit();
-		}
+		CloseBrowser(driver);
 	}
 
 	@BeforeMethod
 	public void setup() {
 
-		prop = CommonUtilities.loadPropertiesFiles();
-
-		browserName = prop.getProperty("browserName");
-
-		if (browserName.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (browserName.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else if (browserName.equals("edge")) {
-			driver = new EdgeDriver();
-		}
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		driver.manage().window().maximize();
-		driver.get(prop.getProperty("appURL"));
-
+		
+		driver = openBrowserAndApplicationURL();
 		headeroptions = new HeaderOptions(driver);
 		headeroptions.ClickOnMyAccountDropMenu();
-
 		registerpage = headeroptions.SelectOnRegisterOption();
 	}
 
@@ -302,6 +260,7 @@ public class Register extends Base {
 		registerpage.selectNewSeletterOption();
 		registerpage.selectPrivacyPolicyField();
 		accountsuccesspage = registerpage.clickOnContinueButton();
+		
 		myaccountpage = accountsuccesspage.ContinuePage();
 		newsletterPage = myaccountpage.ClickonSubscribeunsubscribeNewsletterOption();
 
@@ -339,7 +298,7 @@ public class Register extends Base {
 
 		headeroptions.ClickOnMyAccountDropMenu();
 		loginPage = headeroptions.SelectLoginOption();
-		registerpage = loginPage.ClickOnContinueButton();
+		myaccountpage = loginPage.ClickOnLoginButton();
 
 		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage());
 		headeroptions = registerpage.getHeaderoptions();
@@ -495,7 +454,7 @@ public class Register extends Base {
 
 		actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.ARROW_DOWN)
 				.sendKeys(Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).sendKeys(Keys.ENTER).build().perform();
-
+		
 		for (int i = 1; i <= 23; i++) {
 
 			actions.sendKeys(Keys.TAB).perform();
@@ -849,7 +808,7 @@ public class Register extends Base {
 		Assert.assertEquals(registerpage.getPasswordConfirmFieldDomAttribute("type"), "password");
 
 	}
-
+	// Getting Assertion Error For fireFox 844 line
 	@Test(priority = 23)
 	public void verifynavigatingtotheotherpagesusingoptionslinks() {
 
