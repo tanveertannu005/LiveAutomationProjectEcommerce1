@@ -67,11 +67,7 @@ public class Register extends Base {
 	WebDriver driver;
 	
 	
-	@AfterMethod
-
-	public void teardown() {
-		CloseBrowser(driver);
-	}
+	
 
 	@BeforeMethod
 	public void setup() {

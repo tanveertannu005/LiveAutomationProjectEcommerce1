@@ -6,23 +6,31 @@
       <class name="tests.Login">
         <methods>
           <include name="teardown"/>
-          <include name="VerifyloggingintotheApplicationusingkeyboardkeys"/>
+          <include name="VerifyBrowsingBackAfterLogout"/>
           <include name="VerifyNumberOfUnsuccessfullLoginAttempts"/>
           <include name="verifyLoginPageNavigations"/>
           <include name="verifyLoginPageUi"/>
+          <include name="verifyPasswordIsnotVisibleInPageSource"/>
           <include name="setup"/>
         </methods>
       </class> <!-- tests.Login -->
+      <class name="tests.Logout">
+        <methods>
+          <include name="verifyLoginImmediatelyAfterLogout"/>
+          <include name="Setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- tests.Logout -->
       <class name="tests.Register">
         <methods>
           <include name="VerifydifferentwaysofnavigatingtoRegisterAccountpage"/>
-          <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
           <include name="VerifyRegisteringanAccountbyusingtheKeyboardkeys"/>
+          <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
           <include name="verifyUIofRegisterAccountPage"/>
           <include name="teardown"/>
           <include name="VerifywhethertheMandatoryfieldsintheRegisterAccountpagearenotacceptingonlyspaces"/>
-          <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
           <include name="setup"/>
+          <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
           <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
           <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
         </methods>

@@ -35,11 +35,7 @@ public class Login extends Base {
 
 	}
 
-	@AfterMethod
-	public void teardown() {
-		CloseBrowser(driver);
-	}
-
+	
 	@Test(priority = 1)
 	public void VerifyLoggingIntoApplicationUsingValidCredentials() {
 
@@ -127,7 +123,7 @@ public class Login extends Base {
 		myaccountpage = loginPage.loginIntoApplication(prop.getProperty("validEmail"),
 				prop.getProperty("validPassword"));
 		headeroptions = myaccountpage.getHeaderoptions();
-		logoutPage = headeroptions.SelectLogoutoption();
+		accountLogoutPage = headeroptions.SelectLogoutoption();
 		navigateBackInBrowser(logoutPage.getDriver());
 		refreshPage(logoutPage.getDriver());
 		loginPage = logoutPage.getLoginPage();

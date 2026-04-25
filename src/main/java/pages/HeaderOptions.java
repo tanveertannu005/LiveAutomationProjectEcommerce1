@@ -63,13 +63,26 @@ public class HeaderOptions extends RootPage {
 	@FindBy(xpath = "//button[@class='btn btn-default btn-lg']")
 	private WebElement SearchButton;
 	
+	@FindBy(name = "search")
+	private WebElement SearchBoxfield;
 	
 	@FindBy(linkText = "Logout")
 	private WebElement Logoutoption;
 	
-	public LogoutPage SelectLogoutoption() {
+	public void enterProductintoSearchBoxField(String productName) {
+		elementUtilities.enterTextIntoElement(SearchBoxfield, productName);
+		
+	}
+	
+	
+	public boolean isLogoutOptionUnderMyaccountDropMenuisDisplayed() {
+		return elementUtilities.IsElementDisplayed(Logoutoption);
+	}
+	
+	
+	public AccountLogoutPage SelectLogoutoption() {
 		elementUtilities.ClickOnElement(Logoutoption);
-		return new LogoutPage(driver);
+		return new AccountLogoutPage(driver);
 	}
 	
 	public SearchPage ClickOnSearchButton() {
@@ -137,5 +150,9 @@ public class HeaderOptions extends RootPage {
 				 ClickOnMyAccountDropMenu();
 				return  SelectLoginOption();
 			}
+		public boolean isLoginOptionMyAccountDropMenuDisplayed() {
+		return	elementUtilities.IsElementDisplayed(Loginoption);
+		}
+		
 		
 }

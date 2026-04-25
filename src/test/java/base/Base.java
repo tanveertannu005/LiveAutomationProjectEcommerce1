@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
 
 import pages.AboutUspage;
 import pages.AccountLogoutPage;
@@ -117,11 +118,7 @@ public class Base {
 
 	}
 
-	public void CloseBrowser(WebDriver driver) {
-		if (driver != null) {
-			driver.quit();
-		}
-	}
+	
 
 	public Actions getActions(WebDriver driver) {
 		Actions actions = new Actions(driver);
@@ -149,4 +146,12 @@ public class Base {
 		prop=	CommonUtilities.storePropertiesFile(prop);
 		return prop;
 	}
+	
+	@AfterMethod
+	public void teardown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+
 }

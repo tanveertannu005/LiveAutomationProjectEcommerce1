@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -74,4 +75,13 @@ public class CommonUtilities {
 	        }
 	        return result;
 	    }
+	 public static void takeScreenshot(WebDriver driver, String path) throws IOException {
+
+		    File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		    File dest = new File(path);
+
+		    FileUtils.copyFile(src, dest);
+		}
+	 
+	 
 }

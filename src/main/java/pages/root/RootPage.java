@@ -7,10 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pages.AccountLogoutPage;
 import pages.AccountSuccessPage;
 import pages.HeaderOptions;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.LogoutPage;
 import pages.MyAccountPage;
 import pages.RightColumOptions;
 import utilities.ElementUtilities;
@@ -98,6 +100,10 @@ public class RootPage {
 
 	public AccountSuccessPage getAccountSuccessPage() {
 		return new AccountSuccessPage(driver);
+	}
+	
+	public AccountLogoutPage  getAccountLogoutPage() {
+		return new AccountLogoutPage(driver);
 	}
 
 	public HeaderOptions getHeaderoptions() {
