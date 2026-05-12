@@ -31,6 +31,29 @@ public class MyAccountPage extends RootPage {
 		@FindBy(xpath = "//a[text()='Continue']")
 		private WebElement ContinueSuccessPage;
 		
+		@FindBy(linkText = "Modify your address book entries")
+		private WebElement modifyaddressBookEntries;
+		
+		@FindBy(linkText = "Modify your wish list")
+		private WebElement modifyYourWishListOption;
+		
+		@FindBy(linkText = "View your order history")
+		private WebElement orderHistoryOption;
+		
+		public OrderHistoryPage clickOnViewYourOrderHistoryOption() {
+			elementUtilities.ClickOnElement(orderHistoryOption);
+			return new OrderHistoryPage(driver);
+		}
+		
+		public MywishListPage clickOnModifyYourWishlistOption() {
+			elementUtilities.ClickOnElement(modifyYourWishListOption);
+			return new MywishListPage(driver);
+		}		
+		public AddressBookEntriesPage clickOnModifyAddressBookoption() {
+			elementUtilities.ClickOnElement(modifyaddressBookEntries);
+			return new AddressBookEntriesPage(driver);
+		}
+		
 		
 		public boolean didwenavigateToMyAccountPage() {
 			return	elementUtilities.IsElementDisplayed(edityourAccoutInformation);

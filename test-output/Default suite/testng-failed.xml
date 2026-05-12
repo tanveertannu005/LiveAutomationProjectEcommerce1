@@ -7,7 +7,7 @@
         <methods>
           <include name="teardown"/>
           <include name="Setup"/>
-          <include name="VerifySearchingWithNOnExistingProduct"/>
+          <include name="verifyDisplayingOfSearchFieldAndSearchButtononAllPagesOfTheApplication"/>
         </methods>
       </class> <!-- tests.Search -->
     </classes>

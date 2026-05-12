@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -83,5 +85,16 @@ public class CommonUtilities {
 		    FileUtils.copyFile(src, dest);
 		}
 	 
+	 public static int ConvertToInteger(String text) {
+		 return Integer.parseInt(text);
+		 
+	 }
 	 
+	 public static boolean areItemsInListAreInAscendingorde(List<String> list) {
+		 List<String> sortedList=list;
+		 Collections.sort(sortedList);
+		 return list.equals(sortedList);
+	 }
 }
+
+

@@ -1,12 +1,14 @@
 package base;
 
-
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -15,10 +17,13 @@ import org.testng.annotations.AfterMethod;
 import pages.AboutUspage;
 import pages.AccountLogoutPage;
 import pages.AccountSuccessPage;
+import pages.AddAddressPage;
+import pages.AddressBookEntriesPage;
 import pages.AffiliatePrograPage;
 import pages.BrandsPage;
 import pages.ContactUsPage;
 import pages.DeliveryInformationPage;
+import pages.EditAddressPage;
 import pages.FooterOptions;
 import pages.ForgottenPasswordPage;
 import pages.GiftCertificatesPage;
@@ -28,9 +33,14 @@ import pages.LoginPage;
 import pages.LogoutPage;
 import pages.MyAccountInformationPage;
 import pages.MyAccountPage;
+import pages.MywishListPage;
 import pages.NewsleterPage;
+import pages.OrderHistoryPage;
+import pages.OrderInfromationPage;
 import pages.PasswordChangePage;
 import pages.Privacypolicypage;
+import pages.ProductComparisonPage;
+import pages.ProductDisplayPage;
 import pages.ProductReturnsPage;
 import pages.RegisterPage;
 import pages.RightColumOptions;
@@ -72,8 +82,16 @@ public class Base {
 	public SpecialOffersPage specialOffersPage;
 	public Actions actions;
 	public LogoutPage logoutPage;
-	public PasswordChangePage  passwordChangePage;
-	public AccountLogoutPage accountLogoutPage;				
+	public PasswordChangePage passwordChangePage;
+	public AccountLogoutPage accountLogoutPage;
+	public ProductDisplayPage productDisplayPage;
+	public ProductComparisonPage productComparisonPage;
+	public AddressBookEntriesPage addressBookEntriesPage;
+	public AddAddressPage addAddressPage;
+	public EditAddressPage editAddressPage;
+	public MywishListPage mywishListPage;
+	public OrderHistoryPage ordeHistoryPage;
+	public OrderInfromationPage orderInfromationPage;
 
 	public WebDriver openBrowserAndApplicationURL() {
 
@@ -81,26 +99,47 @@ public class Base {
 		browserName = prop.getProperty("browserName");
 
 		if (browserName.equals("chrome")) {
-			driver = new ChromeDriver();
+
+			ChromeOptions options = new ChromeOptions();
+
+			Map<String, Object> prefs = new HashMap<String, Object>();
+
+			prefs.put("autofill.profile_enabled", false);
+			prefs.put("profile.password_manager_enabled", false);
+			prefs.put("credentials_enable_service", false);
+
+			options.setExperimentalOption("prefs", prefs);
+
+			driver = new ChromeDriver(options);
+
 		} else if (browserName.equals("firefox")) {
+
 			driver = new FirefoxDriver();
+
 		} else if (browserName.equalsIgnoreCase("edge")) {
 
 			String path = System.getProperty("user.dir") + "\\src\\test\\resources\\EdgeDriver\\msedgedriver.exe";
+
 			System.setProperty("webdriver.edge.driver", path);
+
 			driver = new EdgeDriver();
 		}
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("appURL"));
 
 		return driver;
 	}
-	
+
+	public void navigateToPage(String pageUrl) {
+		driver.navigate().to(pageUrl);
+	}
+
 	public String getPageSource(WebDriver driver) {
 		return driver.getPageSource();
 	}
-	
+
 	public void refreshPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
@@ -115,10 +154,7 @@ public class Base {
 
 	public void navigateBackInBrowser(WebDriver driver) {
 		driver.navigate().back();
-
 	}
-
-	
 
 	public Actions getActions(WebDriver driver) {
 		Actions actions = new Actions(driver);
@@ -137,21 +173,25 @@ public class Base {
 		actions.sendKeys(text).perform();
 		return actions;
 	}
-	
+
 	public Properties swapPassword(Properties prop) {
+
 		String oldPassword = prop.getProperty("validPasswordTwo");
 		String newPassword = prop.getProperty("validPasswordThree");
+
 		prop.setProperty("validPasswordTwo", newPassword);
 		prop.setProperty("validPasswordThree", oldPassword);
-		prop=	CommonUtilities.storePropertiesFile(prop);
+
+		prop = CommonUtilities.storePropertiesFile(prop);
+
 		return prop;
 	}
-	
+
 	@AfterMethod
 	public void teardown() {
+
 		if (driver != null) {
 			driver.quit();
 		}
 	}
-
 }

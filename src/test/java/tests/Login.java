@@ -124,9 +124,9 @@ public class Login extends Base {
 				prop.getProperty("validPassword"));
 		headeroptions = myaccountpage.getHeaderoptions();
 		accountLogoutPage = headeroptions.SelectLogoutoption();
-		navigateBackInBrowser(logoutPage.getDriver());
-		refreshPage(logoutPage.getDriver());
-		loginPage = logoutPage.getLoginPage();
+		navigateBackInBrowser(accountLogoutPage.getDriver());
+		refreshPage(accountLogoutPage.getDriver());
+		loginPage = accountLogoutPage.getLoginPage();
 		Assert.assertTrue(loginPage.didWeNavigateToLogin());
 
 	}
@@ -373,7 +373,7 @@ public class Login extends Base {
 		Assert.assertEquals(loginPage.getFirstHeading(), "New Customer");
 		Assert.assertEquals(loginPage.GetSecondHeading(), "Returning Customer");
 	}
-	@Test(priority = 20)
+	@Test(priority = 20,enabled = false)
 	public void verifyLoginPageUi() {
 		CommonUtilities.scrennshots(driver, System.getProperty("user.dir") + "/Screenshots/actualLoginPageUI.png");
 

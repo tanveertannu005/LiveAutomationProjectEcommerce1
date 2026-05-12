@@ -286,28 +286,27 @@ public class Register extends Base {
 
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7) 
 	public void VerifydifferentwaysofnavigatingtoRegisterAccountpage() {
-
+		
+		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage()); 
+		headeroptions = registerpage.getHeaderoptions(); 
+		headeroptions.ClickOnMyAccountDropMenu(); 
+		loginPage = headeroptions.SelectLoginOption(); 
+		myaccountpage = loginPage.ClickOnLoginButton(); 
+		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage()); 
+		headeroptions = registerpage.getHeaderoptions(); 
+		headeroptions.ClickOnMyAccountDropMenu(); loginPage = headeroptions.SelectLoginOption();
+		rightcolumoptions = loginPage.getRightColumnOptions(); registerpage = rightcolumoptions.ClickOnRegisterOption();
 		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage());
-		headeroptions = registerpage.getHeaderoptions();
-
-		headeroptions.ClickOnMyAccountDropMenu();
-		loginPage = headeroptions.SelectLoginOption();
-		myaccountpage = loginPage.ClickOnLoginButton();
-
-		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage());
-		headeroptions = registerpage.getHeaderoptions();
-		headeroptions.ClickOnMyAccountDropMenu();
-		loginPage = headeroptions.SelectLoginOption();
-		rightcolumoptions = loginPage.getRightColumnOptions();
-
-		registerpage = rightcolumoptions.ClickOnRegisterOption();
-
-		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage());
-
+		
 	}
-
+	
+	
+	
+	
+	
+	
 	@Test(priority = 8)
 	public void VerifyRegisteringanAccountbyenteringdifferentpasswordsintoPasswordandPasswordConfirmfields() {
 

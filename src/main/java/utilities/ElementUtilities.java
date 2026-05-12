@@ -1,6 +1,8 @@
 package utilities;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,12 +10,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtilities {
 
 	WebDriver driver;
 	Actions actions;
+	Select select;
 
 	public ElementUtilities(WebDriver driver) {
 		this.driver = driver;
@@ -114,4 +118,46 @@ public class ElementUtilities {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
+	public int getElementsCount(List<WebElement> elements) {
+
+		int count = 0;
+
+		try {
+			count = elements.size();
+		} catch (NoSuchElementException e) {
+			count = 0;
+		}
+		return count;
+
+	}
+
+	// Here we Done Typecasting Study This explore this very Important
+	public void selectOptionDropdownFieldUsingIndex(WebElement element, int optionIndex) {
+		if (IsElementDisplayedOnPage(element) && element.isEnabled()) {
+			element.click();
+			Select select = new Select(element);
+			select.selectByIndex(optionIndex);
+
+		}
+
+	}
+	
+	public void selectOptionDropdownFieldUsingVisibleText(WebElement element, String optionText) {
+		if (IsElementDisplayedOnPage(element) && element.isEnabled()) {
+			element.click();
+			Select select = new Select(element);
+			select.selectByVisibleText(optionText);
+
+		}
+	}
+
+	public List<String> getTextofElements(List<WebElement> items) {
+		List<String>itemsNames = new ArrayList<String>();
+		for(WebElement item:items) {
+			getElementText(item);
+			itemsNames.add(getElementText(item));
+		}
+		return itemsNames;
+	}
+	
 }
