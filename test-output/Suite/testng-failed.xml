@@ -11,8 +11,8 @@
           <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
           <include name="verifyUIofRegisterAccountPage"/>
           <include name="VerifywhethertheMandatoryfieldsintheRegisterAccountpagearenotacceptingonlyspaces"/>
-          <include name="setup"/>
           <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
+          <include name="setup"/>
           <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
           <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
         </methods>
@@ -22,23 +22,26 @@
           <include name="verifyShowProductsByLimitingCounts"/>
           <include name="teardown"/>
           <include name="Setup"/>
+          <include name="verifyDisplayingOfSearchFieldAndSearchButtononAllPagesOfTheApplication"/>
         </methods>
       </class> <!-- tests.Search -->
       <class name="tests.Login">
         <methods>
           <include name="teardown"/>
           <include name="VerifyBrowsingBackAfterLogin"/>
+          <include name="verifyCopyingofTextEnterIntoPasswordField"/>
           <include name="verifyLoginPageNavigations"/>
           <include name="setup"/>
         </methods>
       </class> <!-- tests.Login -->
       <class name="tests.Logout">
         <methods>
-          <include name="teardown"/>
           <include name="verifyBreadCrumbTitleUrlHeadingOfAccountLogoutPage"/>
+          <include name="teardown"/>
           <include name="verifyLoginImmediatelyAfterLogout"/>
           <include name="Setup"/>
           <include name="VerifyLoggingoutUsingMyAccountLogoutOption"/>
+          <include name="VerfiyLogoutInAllsupportedEnvironments"/>
         </methods>
       </class> <!-- tests.Logout -->
     </classes>

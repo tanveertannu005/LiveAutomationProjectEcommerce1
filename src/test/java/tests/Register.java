@@ -999,7 +999,7 @@ public class Register extends Base {
 
 		Assert.assertEquals(getPageTitle(registerpage.getDriver()), "Register Account");
 
-		Assert.assertEquals(getPageUrl(registerpage.getDriver()), prop.getProperty("RegisterPageUrl"));
+		Assert.assertEquals(getPageUrl(registerpage.getDriver()), getBaseUrl()+prop.getProperty("RegisterPageUrl"));
 
 		Assert.assertTrue(registerpage.DidWeNavigateToRegisterPage());
 

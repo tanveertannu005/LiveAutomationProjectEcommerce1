@@ -368,7 +368,7 @@ public class Login extends Base {
 	public void VerifytheBreadcrumbPageHeadingPageURLPageTitleofRegisterLoginPage() {
 
 		Assert.assertEquals(getPageTitle(loginPage.getDriver()), "Account Login");
-		Assert.assertEquals(getPageUrl(loginPage.getDriver()), prop.getProperty("loginPageUrl"));
+		Assert.assertEquals(getPageUrl(loginPage.getDriver()),getBaseUrl()+ prop.getProperty("loginPageUrl"));
 		Assert.assertTrue(loginPage.didWeNavigateToLogin());
 		Assert.assertEquals(loginPage.getFirstHeading(), "New Customer");
 		Assert.assertEquals(loginPage.GetSecondHeading(), "Returning Customer");

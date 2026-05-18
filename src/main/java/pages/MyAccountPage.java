@@ -40,6 +40,73 @@ public class MyAccountPage extends RootPage {
 		@FindBy(linkText = "View your order history")
 		private WebElement orderHistoryOption;
 		
+		@FindBy(linkText = "Downloads")
+		private WebElement downloadsOption;
+		
+		@FindBy(linkText = "Your Reward Points")
+		private WebElement rewardPointsoption;
+		
+		@FindBy(linkText = "View your return requests")
+		private WebElement viewYourReturnrequest; 
+		
+		@FindBy(linkText = "Your Transactions")
+		private WebElement Yourtransactions;
+		
+		@FindBy(linkText = "Recurring payments")
+		private WebElement recurringPayments;
+		
+		@FindBy(linkText = "Register for an affiliate account")
+		private WebElement Registerforanaffiliateaccount;
+		
+		@FindBy(linkText = "Edit your affiliate information")
+		private WebElement Edityouraffiliateinformation;
+		
+		@FindBy(linkText = "Custom Affiliate Tracking Code")
+		private WebElement CustomAffiliateTrackingCode;
+		
+	
+		
+		public AffiliateTrackingpage clickOnCustomAffiliateTrackingCodeOption() {
+			elementUtilities.ClickOnElement(CustomAffiliateTrackingCode);
+			return new AffiliateTrackingpage(driver);
+			
+		}
+		
+		public AffiliatePage clickOndityouraffiliateinformation() {
+			elementUtilities.clickEitherOfTheseElements(Registerforanaffiliateaccount,Edityouraffiliateinformation);
+			return new AffiliatePage(driver);
+		}
+		
+		public AffiliatePage clickonRegisterforanaffiliateaccountoption() {
+			elementUtilities.ClickOnElement(Registerforanaffiliateaccount);
+			return new AffiliatePage(driver);
+		}
+		
+		public RecurringPaymentspage clickOnrecurringPaymentsPage() {
+			elementUtilities.ClickOnElement(recurringPayments);
+			return new RecurringPaymentspage(driver);
+		}
+		
+		public YourTransactionsPage clickOnYourTransactionsPage() {
+			elementUtilities.ClickOnElement(Yourtransactions);
+			return new YourTransactionsPage(driver);
+		}
+		
+		public ProductReturnsPage clickOnreturnRequestOption() {
+			elementUtilities.ClickOnElement(viewYourReturnrequest);
+			return new ProductReturnsPage(driver);
+		}
+		
+		public RewardPointsPage clickOnRewardPointsOption() {
+			elementUtilities.ClickOnElement(rewardPointsoption);
+			return new RewardPointsPage(driver);
+		}
+		
+		public Downloadspage clickOnDownloadsOption() {
+			elementUtilities.ClickOnElement(downloadsOption);
+			return new Downloadspage(driver);
+		}
+		
 		public OrderHistoryPage clickOnViewYourOrderHistoryOption() {
 			elementUtilities.ClickOnElement(orderHistoryOption);
 			return new OrderHistoryPage(driver);

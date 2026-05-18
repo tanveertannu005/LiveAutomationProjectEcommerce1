@@ -62,6 +62,8 @@ public class FooterOptions extends RootPage {
 	private WebElement newsletterpage;
 	
 	
+	
+	
 	public LoginPage SelectNewsletterPage() {
 		elementUtilities.ClickOnElement(newsletterpage);
 		return new LoginPage(driver);

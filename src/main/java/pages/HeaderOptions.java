@@ -68,6 +68,8 @@ public class HeaderOptions extends RootPage {
 	
 	@FindBy(linkText = "My Account")
 	private WebElement myAccountoption;
+	
+	
 
 	public MyAccountPage selectMyaccountOption() {
 		elementUtilities.ClickOnElement(myAccountoption);
@@ -93,6 +95,12 @@ public class HeaderOptions extends RootPage {
 		return elementUtilities.getelementDomAttribute(SearchBoxfield, "placeholder");
 	}
 
+	public SearchPage enterProductClickOnsearchButton(String productName) {
+		enterProductintoSearchBoxField(productName);
+		 ClickOnSearchButton();
+		 return new SearchPage(driver);
+	}
+	
 	public void enterProductintoSearchBoxField(String productName) {
 		elementUtilities.enterTextIntoElement(SearchBoxfield, productName);
 
@@ -109,7 +117,7 @@ public class HeaderOptions extends RootPage {
 
 	public SearchPage ClickOnSearchButton() {
 		elementUtilities.ClickOnElement(SearchButton);
-		;
+		
 		return new SearchPage(driver);
 	}
 
@@ -168,6 +176,12 @@ public class HeaderOptions extends RootPage {
 		return new RegisterPage(driver);
 
 	}
+	
+	public RegisterPage navigateToRegisterPage() {
+		ClickOnMyAccountDropMenu();
+	return	SelectOnRegisterOption();
+	}
+	
 
 	public LoginPage navigateToLoginPage() {
 		ClickOnMyAccountDropMenu();

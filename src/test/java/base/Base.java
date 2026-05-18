@@ -1,5 +1,6 @@
 package base;
 
+import java.awt.RenderingHints.Key;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,14 +20,21 @@ import pages.AccountLogoutPage;
 import pages.AccountSuccessPage;
 import pages.AddAddressPage;
 import pages.AddressBookEntriesPage;
+import pages.AffiliatePage;
 import pages.AffiliatePrograPage;
+import pages.AffiliateTrackingpage;
 import pages.BrandsPage;
+import pages.CheckOutPage;
+import pages.CheckoutSuccessPage;
 import pages.ContactUsPage;
+
 import pages.DeliveryInformationPage;
+import pages.Downloadspage;
 import pages.EditAddressPage;
 import pages.FooterOptions;
 import pages.ForgottenPasswordPage;
 import pages.GiftCertificatesPage;
+import pages.GuestCheckOutPage;
 import pages.HeaderOptions;
 import pages.HomePage;
 import pages.LoginPage;
@@ -42,13 +50,17 @@ import pages.Privacypolicypage;
 import pages.ProductComparisonPage;
 import pages.ProductDisplayPage;
 import pages.ProductReturnsPage;
+import pages.RecurringPaymentspage;
 import pages.RegisterPage;
+import pages.ReturnInformationPage;
+import pages.RewardPointsPage;
 import pages.RightColumOptions;
 import pages.SearchPage;
 import pages.ShoppingCartPage;
 import pages.SiteMappage;
 import pages.SpecialOffersPage;
 import pages.TermsandConditionsPage;
+import pages.YourTransactionsPage;
 import utilities.CommonUtilities;
 
 public class Base {
@@ -92,6 +104,17 @@ public class Base {
 	public MywishListPage mywishListPage;
 	public OrderHistoryPage ordeHistoryPage;
 	public OrderInfromationPage orderInfromationPage;
+	public Downloadspage downloadspage;
+	public RewardPointsPage rewardPointsPage;
+	public ReturnInformationPage returnInformationPage;
+	public YourTransactionsPage yourTransactionsPage;
+	public RecurringPaymentspage recurringPaymentspage;
+	public AffiliatePage affiliatePage;
+	public AffiliateTrackingpage affiliateTrackingpage;
+	public CheckOutPage checkOutPage;
+	public CheckoutSuccessPage checkoutSuccessPage;
+	public GuestCheckOutPage guestCheckOutPage;
+	
 
 	public WebDriver openBrowserAndApplicationURL() {
 
@@ -125,7 +148,7 @@ public class Base {
 			driver = new EdgeDriver();
 		}
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(CommonUtilities.MIN_TIME));
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("appURL"));
 
@@ -144,6 +167,12 @@ public class Base {
 		driver.navigate().refresh();
 	}
 
+	public void refreshAndNavigateToPage(WebDriver driver,String pageUrl) {
+		refreshPage(driver);
+		navigateToPage(pageUrl);
+	}
+	
+	
 	public String getPageTitle(WebDriver driver) {
 		return driver.getTitle();
 	}
@@ -161,14 +190,28 @@ public class Base {
 		return actions;
 	}
 
+	public Actions ClickKeyBoardKeyMultipleTimes(WebDriver driver, Keys keyName, int noOfTimes) {
+		actions=getActions(driver);
+		for (int i = 1; i <= noOfTimes; i++) {
+			actions.sendKeys(keyName).perform();
+		}
+		return actions;
+	}
+	
 	public Actions ClickKeyBoardKeyMultipleTimes(Actions actions, Keys keyName, int noOfTimes) {
-
+		
 		for (int i = 1; i <= noOfTimes; i++) {
 			actions.sendKeys(keyName).perform();
 		}
 		return actions;
 	}
 
+	public void pressTwoKeysTogether(WebDriver driver, Keys keynameone, Keys keynametwo  ) {
+		actions=getActions(driver);
+		actions.keyDown(keynameone).sendKeys(keynametwo).keyUp(keynameone).build().perform();
+	}
+	
+	
 	public Actions typeTextIntoFieldsUsingActions(Actions actions, String text) {
 		actions.sendKeys(text).perform();
 		return actions;
@@ -185,6 +228,11 @@ public class Base {
 		prop = CommonUtilities.storePropertiesFile(prop);
 
 		return prop;
+	}
+	
+	public String getBaseUrl() {
+		return prop.getProperty("appURL");
+		
 	}
 
 	@AfterMethod

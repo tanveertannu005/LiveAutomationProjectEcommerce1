@@ -1,6 +1,7 @@
 package utilities;
 
 import java.io.File;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,7 +19,16 @@ import org.openqa.selenium.io.FileHandler;
 
 import jakarta.mail.Message;
 
+
+
+
+
 public class CommonUtilities {
+	
+	public static final int MIN_TIME=3;
+	public static final int AVERAGE_TIME=10;
+	public static final int MAX_TIME=30;
+	
 
 	public static Properties loadPropertiesFiles() {
 		Properties prop = new Properties();
@@ -95,6 +105,17 @@ public class CommonUtilities {
 		 Collections.sort(sortedList);
 		 return list.equals(sortedList);
 	 }
+	 
+	 public static void waitForSeconds(int milliseconds) {
+		 try {
+			Thread.sleep(milliseconds);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+	 
 }
+
 
 

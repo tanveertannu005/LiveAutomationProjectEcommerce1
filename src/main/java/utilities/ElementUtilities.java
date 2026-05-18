@@ -40,10 +40,49 @@ public class ElementUtilities {
 		actions.click(element).keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).build().perform();
 	}
 
+	
+	public void clickEitherOfTheseElements(WebElement elementone,WebElement elementTwo ) {
+		if(IsElementDisplayedOnWithoutexception(elementone)) {
+			elementone.click();
+			}else  {
+				elementTwo.click();
+			}
+		
+	}
+	
+	
+	
+	
 	public void ClickOnElement(WebElement element) {
 		WaitForElementToBeClickable(element);
 		element.click();
 	}
+	
+	public void waitForElement(WebElement element,int seconds) {
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(seconds));
+		wait.until(ExpectedConditions.visibilityOf(element));
+		
+	}
+	
+	public boolean waitAndCheckForElementDisplayedStatus(WebElement element,int seconds) {
+		boolean b=false;
+		try {
+			WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(seconds));
+			wait.until(ExpectedConditions.visibilityOf(element));
+			b=false;
+		} catch (Exception e) {
+			b=false;
+		}
+		return b;
+		
+	}
+	
+	
+	public void waitForElementAndClick(WebElement element,int seconds) {
+		waitForElement(element,seconds);
+		ClickOnElement(element);
+	}
+	
 
 	public String getElementText(WebElement element) {
 		String elementText = "";
@@ -53,6 +92,8 @@ public class ElementUtilities {
 		return elementText;
 	}
 
+	
+	
 	public boolean IsElementDisplayedOnPage(WebElement element) {
 		try {
 			return element.isDisplayed();
@@ -61,6 +102,20 @@ public class ElementUtilities {
 		}
 	}
 
+	public boolean IsElementDisplayedOnWithoutexception(WebElement element) {
+		boolean b=false;
+		try {
+			
+		b=element.isDisplayed();	
+		} catch (NoSuchElementException e) {
+			b=false;
+		}
+		return b;
+	}
+	
+	
+	
+	
 	public boolean IsElementDisplayed(WebElement element) {
 		boolean b = false;
 		try {

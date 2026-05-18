@@ -28,7 +28,7 @@ public class RightColumOptions extends RootPage {
 	@FindBy(xpath = "//a[@class='list-group-item'][text()='Forgotten Password']")
 	private WebElement forGottenPasswordOption;
 
-	@FindBy(xpath = "//a[@class='list-group-item'][text()='My Account']")
+	@FindBy(xpath = "//a[@class='list-group-item' and normalize-space()='My Account']")
 	private WebElement MyAccountOption;
 
 	@FindBy(xpath = "//a[@class='list-group-item'][text()='Address Book']")
@@ -107,6 +107,11 @@ public class RightColumOptions extends RootPage {
 		return new LoginPage(driver);
 	}
 
+	public MyAccountPage ClickOnMyAcccountOptionAfterLogin() {
+		elementUtilities.ClickOnElement(MyAccountOption);
+		return new MyAccountPage(driver);
+	}
+	
 	public LoginPage ClickOnMyAcccountOption() {
 		elementUtilities.ClickOnElement(MyAccountOption);
 		return new LoginPage(driver);

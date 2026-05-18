@@ -196,4 +196,8 @@ public class SearchPage extends RootPage {
 		return elementUtilities.IsElementDisplayed(SearchPageBreadCrumb);
 	}
 
+	public SearchPage clickOnBreadCrumb() {
+		elementUtilities.ClickOnElement(SearchPageBreadCrumb);
+		return new SearchPage(driver);
+	}
 }
