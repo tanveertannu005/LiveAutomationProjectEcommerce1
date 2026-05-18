@@ -325,7 +325,7 @@ public class Search extends Base {
 
 	// Test will fail defect In the app refer Test Case doc For Clarification
 	@Test(priority = 15)
-	public void verifyShowProductsByLimitingCounts() {
+	public void how () {
 		headeroptions.enterProductintoSearchBoxField(prop.getProperty("existingProductTwo"));
 		searchPage = headeroptions.ClickOnSearchButton();
 		String productLimitone = "20";
