@@ -30,17 +30,22 @@ public class Login extends Base {
 
 		driver = openBrowserAndApplicationURL();
 		headeroptions = new HeaderOptions(driver);
-		headeroptions.ClickOnMyAccountDropMenu();
-		loginPage = headeroptions.SelectLoginOption();
+		loginPage = headeroptions.navigateToLoginPage();
 
 	}
 
-	
 	@Test(priority = 1)
 	public void VerifyLoggingIntoApplicationUsingValidCredentials() {
-
+		String emailAddress = CommonUtilities.generateBrandNewEmail();
+		registerpage = headeroptions.navigateToRegisterPage();
+		accountsuccesspage = registerpage.registeringAnAccount(prop.getProperty("firstName"),
+				prop.getProperty("lastName"), emailAddress, prop.getProperty("telephoneNumber"),
+				prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+		rightcolumoptions = accountsuccesspage.getRightColumnOptions();
+		rightcolumoptions.clickOnLogoutOption();
+		loginPage = headeroptions.navigateToLoginPage();
 		Assert.assertTrue(loginPage.didWeNavigateToLogin());
-		loginPage.enterEmail(prop.getProperty("validEmail"));
+		loginPage.enterEmail(emailAddress);
 		loginPage.enterPassword(prop.getProperty("validPassword"));
 		myaccountpage = loginPage.ClickOnLoginButton();
 		Assert.assertTrue(myaccountpage.didwenavigateToMyAccountPage());
@@ -91,8 +96,17 @@ public class Login extends Base {
 
 	@Test(priority = 7)
 	public void VerifyloggingintotheApplicationusingkeyboardkeys() {
+		String emailAddress = CommonUtilities.generateBrandNewEmail();
+		registerpage = headeroptions.navigateToRegisterPage();
+		accountsuccesspage = registerpage.registeringAnAccount(prop.getProperty("firstName"),
+				prop.getProperty("lastName"), emailAddress, prop.getProperty("telephoneNumber"),
+				prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+		rightcolumoptions = accountsuccesspage.getRightColumnOptions();
+		rightcolumoptions.clickOnLogoutOption();
+		loginPage = headeroptions.navigateToLoginPage();	
+		
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.TAB, 23);
-		actions = typeTextIntoFieldsUsingActions(actions, prop.getProperty("validEmail"));
+		actions = typeTextIntoFieldsUsingActions(actions, emailAddress);
 		actions = ClickKeyBoardKeyMultipleTimes(actions, Keys.TAB, 1);
 		actions = typeTextIntoFieldsUsingActions(actions, prop.getProperty("validPassword"));
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.TAB, 2);
@@ -111,7 +125,16 @@ public class Login extends Base {
 
 	@Test(priority = 9)
 	public void VerifyBrowsingBackAfterLogin() {
-		myaccountpage = loginPage.loginIntoApplication(prop.getProperty("validEmail"),
+		String emailAddress = CommonUtilities.generateBrandNewEmail();
+		registerpage = headeroptions.navigateToRegisterPage();
+		accountsuccesspage = registerpage.registeringAnAccount(prop.getProperty("firstName"),
+				prop.getProperty("lastName"), emailAddress, prop.getProperty("telephoneNumber"),
+				prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+		rightcolumoptions = accountsuccesspage.getRightColumnOptions();
+		rightcolumoptions.clickOnLogoutOption();
+		loginPage = headeroptions.navigateToLoginPage();	
+						
+		myaccountpage = loginPage.loginIntoApplication(emailAddress,
 				prop.getProperty("validPassword"));
 		navigateBackInBrowser(myaccountpage.getDriver());
 		refreshPage(myaccountpage.getDriver());
@@ -120,7 +143,17 @@ public class Login extends Base {
 
 	@Test(priority = 10)
 	public void VerifyBrowsingBackAfterLogout() {
-		myaccountpage = loginPage.loginIntoApplication(prop.getProperty("validEmail"),
+		
+		String emailAddress = CommonUtilities.generateBrandNewEmail();
+		registerpage = headeroptions.navigateToRegisterPage();
+		accountsuccesspage = registerpage.registeringAnAccount(prop.getProperty("firstName"),
+				prop.getProperty("lastName"), emailAddress, prop.getProperty("telephoneNumber"),
+				prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+		rightcolumoptions = accountsuccesspage.getRightColumnOptions();
+		rightcolumoptions.clickOnLogoutOption();
+		loginPage = headeroptions.navigateToLoginPage();	
+		
+			myaccountpage = loginPage.loginIntoApplication(emailAddress,
 				prop.getProperty("validPassword"));
 		headeroptions = myaccountpage.getHeaderoptions();
 		accountLogoutPage = headeroptions.SelectLogoutoption();
@@ -368,12 +401,13 @@ public class Login extends Base {
 	public void VerifytheBreadcrumbPageHeadingPageURLPageTitleofRegisterLoginPage() {
 
 		Assert.assertEquals(getPageTitle(loginPage.getDriver()), "Account Login");
-		Assert.assertEquals(getPageUrl(loginPage.getDriver()),getBaseUrl()+ prop.getProperty("loginPageUrl"));
+		Assert.assertEquals(getPageUrl(loginPage.getDriver()), getBaseUrl() + prop.getProperty("loginPageUrl"));
 		Assert.assertTrue(loginPage.didWeNavigateToLogin());
 		Assert.assertEquals(loginPage.getFirstHeading(), "New Customer");
 		Assert.assertEquals(loginPage.GetSecondHeading(), "Returning Customer");
 	}
-	@Test(priority = 20,enabled = false)
+
+	@Test(priority = 20, enabled = false)
 	public void verifyLoginPageUi() {
 		CommonUtilities.scrennshots(driver, System.getProperty("user.dir") + "/Screenshots/actualLoginPageUI.png");
 
@@ -381,11 +415,22 @@ public class Login extends Base {
 				System.getProperty("user.dir") + "/Screenshots/actualLoginPageUI.png",
 				System.getProperty("user.dir") + "\\Screenshots\\expectedRegisterPageUI.png"));
 	}
+
 	@Test(priority = 21)
 
 	public void VerifyLogininallthesupportedenvironments() {
+		String emailAddress = CommonUtilities.generateBrandNewEmail();
+		registerpage = headeroptions.navigateToRegisterPage();
+		accountsuccesspage = registerpage.registeringAnAccount(prop.getProperty("firstName"),
+				prop.getProperty("lastName"), emailAddress, prop.getProperty("telephoneNumber"),
+				prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+		rightcolumoptions = accountsuccesspage.getRightColumnOptions();
+		rightcolumoptions.clickOnLogoutOption();
+		loginPage = headeroptions.navigateToLoginPage();
+						
+		
 		Assert.assertTrue(loginPage.didWeNavigateToLogin());
-		loginPage.enterEmail(prop.getProperty("validEmail"));
+		loginPage.enterEmail(emailAddress);
 		loginPage.enterPassword(prop.getProperty("validPassword"));
 		myaccountpage = loginPage.ClickOnLoginButton();
 		Assert.assertTrue(myaccountpage.didwenavigateToMyAccountPage());

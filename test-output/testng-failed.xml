@@ -8,24 +8,14 @@
           <include name="verifyUsingAllOptionsOnSearchResultsPageUsingKeyboardKeys"/>
           <include name="teardown"/>
           <include name="Setup"/>
-          <include name="how"/>
+          <include name="verifyProductsCountFromSearchBoxField"/>
         </methods>
       </class> <!-- tests.Search -->
-      <class name="tests.Logout">
-        <methods>
-          <include name="teardown"/>
-          <include name="verifyBreadCrumbTitleUrlHeadingOfAccountLogoutPage"/>
-          <include name="Setup"/>
-          <include name="verfiyLogoutUI"/>
-          <include name="VerfiyLogoutInAllsupportedEnvironments"/>
-        </methods>
-      </class> <!-- tests.Logout -->
       <class name="tests.Login">
         <methods>
-          <include name="VerifyloggingintotheApplicationusingkeyboardkeys"/>
           <include name="teardown"/>
-          <include name="VerifyBrowsingBackAfterLogin"/>
           <include name="verifyLoginPageNavigations"/>
+          <include name="verifyPasswordIsnotVisibleInPageSource"/>
           <include name="setup"/>
         </methods>
       </class> <!-- tests.Login -->
@@ -36,10 +26,10 @@
           <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
           <include name="VerifyRegisteringanAccountbyusingtheKeyboardkeys"/>
           <include name="verifyUIofRegisterAccountPage"/>
-          <include name="VerifywhethertheMandatoryfieldsintheRegisterAccountpagearenotacceptingonlyspaces"/>
           <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
           <include name="setup"/>
           <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
+          <include name="verifynavigatingtotheotherpagesusingoptionslinks"/>
           <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
         </methods>
       </class> <!-- tests.Register -->

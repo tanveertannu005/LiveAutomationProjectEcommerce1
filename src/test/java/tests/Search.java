@@ -1,5 +1,7 @@
 package tests;
 
+import java.io.IOException;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -325,7 +327,7 @@ public class Search extends Base {
 
 	// Test will fail defect In the app refer Test Case doc For Clarification
 	@Test(priority = 15)
-	public void how () {
+	public void verifyProductsCountFromSearchBoxField() {
 		headeroptions.enterProductintoSearchBoxField(prop.getProperty("existingProductTwo"));
 		searchPage = headeroptions.ClickOnSearchButton();
 		String productLimitone = "20";
@@ -346,6 +348,7 @@ public class Search extends Base {
 
 	}
 
+	// One of the Toughest Test case to Automate lot to learn
 	@Test(priority = 16)
 	public void verifyDisplayingOfSearchFieldAndSearchButtononAllPagesOfTheApplication() {
 
@@ -540,10 +543,11 @@ public class Search extends Base {
 		Assert.assertTrue(searchPage.didWeNaviagteToSearchResults());
 	}
 
+	// Need To work on this test case
 	@Test(priority = 19)
 	public void verifyUsingAllOptionsOnSearchResultsPageUsingKeyboardKeys() {
 
-		headeroptions.enterProductClickOnsearchButton("");
+		headeroptions.ClickOnSearchButton();
 		actions = ClickKeyBoardKeyMultipleTimes(headeroptions.getDriver(), Keys.TAB, 21);
 		actions = typeTextIntoFieldsUsingActions(actions, prop.getProperty("existingProductOne"));
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.TAB, 1);
@@ -591,8 +595,7 @@ public class Search extends Base {
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.ENTER, 1);
 		Assert.assertTrue(productDisplayPage.didWeNavigateToProductDisplayPage());
 		navigateBackInBrowser(productComparisonPage.getDriver());
-		
-		
+
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.TAB, 1);
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.ENTER, 1);
 		Assert.assertTrue(productDisplayPage.IsShoppingCartOptionDisplayedTheSuccessPage());
@@ -602,6 +605,55 @@ public class Search extends Base {
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.TAB, 1);
 		actions = ClickKeyBoardKeyMultipleTimes(getActions(driver), Keys.ENTER, 1);
 		Assert.assertTrue(productDisplayPage.IsProductComparisonOptionDisplayedTheSuccessPage());
+
+	}
+
+	@Test(priority = 20)
+	public void verifySearchPageURLTitleHeading() {
+		searchPage = headeroptions.ClickOnSearchButton();
+		Assert.assertEquals(searchPage.GetPageHeading(), "Search");
+		Assert.assertEquals(getPageUrl(searchPage.getDriver()), getBaseUrl()+prop.getProperty("SearchPage"));
+		Assert.assertEquals(getPageTitle(searchPage.getDriver()), "Search");
+
+	}
+	@Test(priority =21)
+	public void verifySearchPageUI() throws IOException {
+
+		searchPage = headeroptions.ClickOnSearchButton();
+
+	    if (browserName.equalsIgnoreCase("chrome")) {
+	        CommonUtilities.takeScreenshot(driver,
+	                System.getProperty("user.dir") + "\\Screenshots\\ActualSearchPageUI.png");
+
+	        Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
+	                System.getProperty("user.dir") + "\\Screenshots\\actualsearchPageUI.png",
+	                System.getProperty("user.dir") + "\\Screenshots\\expectedssearchPageUI.png"));
+	                
+	    } else if (browserName.equalsIgnoreCase("firefox")) {
+
+	        CommonUtilities.takeScreenshot(driver,
+	                System.getProperty("user.dir") + "\\Screenshots\\expectedFirefoxSearchPageUI.png");
+
+	        Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
+	                System.getProperty("user.dir") + "\\Screenshots\\actualFirefoxSearchPageUI.png",
+	                System.getProperty("user.dir") + "\\Screenshots\\expectedFirefoxsearchPageUI.png"));
+
+	    } else if (browserName.equalsIgnoreCase("edge")) {
+
+	        CommonUtilities.takeScreenshot(driver,
+	                System.getProperty("user.dir") + "\\Screenshots\\expectedEdgesearchPageUI.png");
+
+	        Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
+	                System.getProperty("user.dir") + "\\Screenshots\\actualEdgeSearchPageUI.png",
+	                System.getProperty("user.dir") + "\\Screenshots\\expectedEdgesearchPageUI.png"));
+	    }
+	}
+	@Test(priority = 22)
+	public void verifyFuntionalityInAllenvironMents() {
+	searchPage=	headeroptions.enterProductClickOnsearchButton(prop.getProperty("existingProductThree"));
+		Assert.assertTrue(searchPage.didWeNaviagteToSearchResults());
+		Assert.assertTrue(searchPage.isProductHavingTextInItsDescriptionDisplayedInSearchResults());
 		
 	}
+
 }
