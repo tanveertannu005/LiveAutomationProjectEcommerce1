@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
@@ -61,10 +62,11 @@ import pages.SpecialOffersPage;
 import pages.TermsandConditionsPage;
 import utilities.CommonUtilities;
 import utilities.ElementUtilities;
+import utilities.MyXLSReader;
 
 
 public class Register extends Base {
-	WebDriver driver;
+	public WebDriver driver;
 	
 	
 	
@@ -609,14 +611,14 @@ public class Register extends Base {
 
 	@Test(priority = 17, dataProvider = "passwordSupplier")
 	public void VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards(
-			String PasswordText) {
+			HashMap<String,String> map) {
 
 		registerpage.enterFirstName(prop.getProperty("firstName"));
 		registerpage.enterLastName(prop.getProperty("lastName"));
 		registerpage.EnterEmail(CommonUtilities.generateBrandNewEmail());
 		registerpage.EnterTelePhoneNumber(prop.getProperty("telephoneNumber"));
-		registerpage.enterPasswordField(PasswordText);
-		registerpage.enterPasswordConfirm(PasswordText);
+		registerpage.enterPasswordField(map.get("Passwords"));
+		registerpage.enterPasswordConfirm(map.get("Passwords"));
 
 		registerpage.selectNewSeletterOption();
 		registerpage.selectPrivacyPolicyField();
@@ -643,10 +645,18 @@ public class Register extends Base {
 	@DataProvider(name = "passwordSupplier")
 	public Object[][] supplypassword() {
 
-		Object[][] data = { { "12345" }, { "abcdefgh" }, { "abcd1234" }, { "abcd123$" }, { "abcd123$#" } };
+	    String path = System.getProperty("user.dir")
+	            + "/src/test/resources/TutorialsNinja.xlsx";
 
-		return data;
+	    MyXLSReader myXlsReader = new MyXLSReader(path);
+
+	    return CommonUtilities.getTestData(
+	            myXlsReader,
+	            "RegisterWithNoPasswordComplexityTest",
+	            "BadPasswords"
+	    );
 	}
+	
 
 	/*
 	 * @Test(priority = 18) public void VerifyHeightWidthNumberOfCharacters() {

@@ -19,7 +19,7 @@ import pages.SearchPage;
 import utilities.CommonUtilities;
 
 public class Search extends Base {
-	WebDriver driver;
+	public WebDriver driver;
 
 	@BeforeMethod
 	public void Setup() {

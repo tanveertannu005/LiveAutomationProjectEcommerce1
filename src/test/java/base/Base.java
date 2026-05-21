@@ -65,7 +65,7 @@ import utilities.CommonUtilities;
 
 public class Base {
 
-	WebDriver driver;
+	public WebDriver driver;
 	public Properties prop;
 	public String browserName;
 	public HeaderOptions headeroptions;
@@ -114,7 +114,6 @@ public class Base {
 	public CheckOutPage checkOutPage;
 	public CheckoutSuccessPage checkoutSuccessPage;
 	public GuestCheckOutPage guestCheckOutPage;
-	
 
 	public WebDriver openBrowserAndApplicationURL() {
 
@@ -167,12 +166,11 @@ public class Base {
 		driver.navigate().refresh();
 	}
 
-	public void refreshAndNavigateToPage(WebDriver driver,String pageUrl) {
+	public void refreshAndNavigateToPage(WebDriver driver, String pageUrl) {
 		refreshPage(driver);
 		navigateToPage(pageUrl);
 	}
-	
-	
+
 	public String getPageTitle(WebDriver driver) {
 		return driver.getTitle();
 	}
@@ -191,27 +189,26 @@ public class Base {
 	}
 
 	public Actions ClickKeyBoardKeyMultipleTimes(WebDriver driver, Keys keyName, int noOfTimes) {
-		actions=getActions(driver);
-		for (int i = 1; i <= noOfTimes; i++) {
-			actions.sendKeys(keyName).perform();
-		}
-		return actions;
-	}
-	
-	public Actions ClickKeyBoardKeyMultipleTimes(Actions actions, Keys keyName, int noOfTimes) {
-		
+		actions = getActions(driver);
 		for (int i = 1; i <= noOfTimes; i++) {
 			actions.sendKeys(keyName).perform();
 		}
 		return actions;
 	}
 
-	public void pressTwoKeysTogether(WebDriver driver, Keys keynameone, Keys keynametwo  ) {
-		actions=getActions(driver);
+	public Actions ClickKeyBoardKeyMultipleTimes(Actions actions, Keys keyName, int noOfTimes) {
+
+		for (int i = 1; i <= noOfTimes; i++) {
+			actions.sendKeys(keyName).perform();
+		}
+		return actions;
+	}
+
+	public void pressTwoKeysTogether(WebDriver driver, Keys keynameone, Keys keynametwo) {
+		actions = getActions(driver);
 		actions.keyDown(keynameone).sendKeys(keynametwo).keyUp(keynameone).build().perform();
 	}
-	
-	
+
 	public Actions typeTextIntoFieldsUsingActions(Actions actions, String text) {
 		actions.sendKeys(text).perform();
 		return actions;
@@ -229,10 +226,10 @@ public class Base {
 
 		return prop;
 	}
-	
+
 	public String getBaseUrl() {
 		return prop.getProperty("appURL");
-		
+
 	}
 
 	@AfterMethod

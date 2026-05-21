@@ -5,9 +5,9 @@
     <classes>
       <class name="tests.Register">
         <methods>
-          <include name="VerifydifferentwaysofnavigatingtoRegisterAccountpage"/>
           <include name="teardown"/>
           <include name="setup"/>
+          <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
         </methods>
       </class> <!-- tests.Register -->
     </classes>

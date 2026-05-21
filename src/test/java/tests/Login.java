@@ -22,8 +22,8 @@ import utilities.CommonUtilities;
 import utilities.ElementUtilities;
 
 public class Login extends Base {
+	public WebDriver driver;
 
-	WebDriver driver;
 
 	@BeforeMethod
 	public void setup() {
