@@ -65,7 +65,7 @@ import utilities.ElementUtilities;
 import utilities.MyXLSReader;
 
 
-public class Register extends Base {
+public class RegisterTest extends Base {
 	public WebDriver driver;
 	
 	

@@ -1,5 +1,6 @@
 D:\Automation\LiveAutomationProjectEcommerce\src\test\java\base\Base.java
-D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\Login.java
-D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\Logout.java
-D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\Register.java
-D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\Search.java
+D:\Automation\LiveAutomationProjectEcommerce\src\test\java\listeners\MyListeners.java
+D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\LoginTest.java
+D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\LogoutTest.java
+D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\RegisterTest.java
+D:\Automation\LiveAutomationProjectEcommerce\src\test\java\tests\SearchTest.java

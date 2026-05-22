@@ -13,7 +13,7 @@ import pages.AccountLogoutPage;
 import pages.HeaderOptions;
 import utilities.CommonUtilities;
 
-public class Logout extends Base {
+public class LogoutTest extends Base {
 	public WebDriver driver;
 
 	@BeforeMethod

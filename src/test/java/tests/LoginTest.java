@@ -21,7 +21,7 @@ import pages.RightColumOptions;
 import utilities.CommonUtilities;
 import utilities.ElementUtilities;
 
-public class Login extends Base {
+public class LoginTest extends Base {
 	public WebDriver driver;
 
 

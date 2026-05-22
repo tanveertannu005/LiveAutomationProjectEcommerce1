@@ -1,0 +1,4 @@
+tests\SearchTest.class
+tests\LoginTest.class
+tests\RegisterTest.class
+tests\LogoutTest.class
