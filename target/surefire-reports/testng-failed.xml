@@ -6,28 +6,28 @@
   </listeners>
   <test thread-count="5" name="Test(failed)" verbose="0">
     <classes>
+      <class name="tests.SearchTest">
+        <methods>
+          <include name="verifyUsingAllOptionsOnSearchResultsPageUsingKeyboardKeys"/>
+          <include name="Setup"/>
+          <include name="teardown"/>
+          <include name="verifyProductsCountFromSearchBoxField"/>
+        </methods>
+      </class> <!-- tests.SearchTest -->
       <class name="tests.RegisterTest">
         <methods>
-          <include name="teardown"/>
           <include name="VerifyRegisteringanAccountbyprovidinganinvalidphonenumber"/>
+          <include name="teardown"/>
           <include name="VerifydifferentwaysofnavigatingtoRegisterAccountpage"/>
-          <include name="setup"/>
           <include name="VerifyThankyouforconfirmationEmailonSuccesfullRegistration"/>
-          <include name="VerifyRegisteringanAccountbyusingtheKeyboardkeys"/>
+          <include name="setup"/>
           <include name="VerifywhetherthePasswordfieldsintheRegisterAccountpagearefollowingPasswordComplexityStandards" invocation-numbers="0 1 2 3 4"/>
+          <include name="VerifyRegisteringanAccountbyusingtheKeyboardkeys"/>
           <include name="VerifyRegisterAccountByLeadingAndTralingSpaces"/>
           <include name="verifyUIofRegisterAccountPage"/>
           <include name="VerifywhethertheMandatoryfieldsintheRegisterAccountpagearenotacceptingonlyspaces"/>
         </methods>
       </class> <!-- tests.RegisterTest -->
-      <class name="tests.SearchTest">
-        <methods>
-          <include name="Setup"/>
-          <include name="verifyUsingAllOptionsOnSearchResultsPageUsingKeyboardKeys"/>
-          <include name="teardown"/>
-          <include name="verifyProductsCountFromSearchBoxField"/>
-        </methods>
-      </class> <!-- tests.SearchTest -->
       <class name="tests.LoginTest">
         <methods>
           <include name="teardown"/>
@@ -42,7 +42,7 @@
           <include name="teardown"/>
           <include name="Setup"/>
           <include name="verifyBreadCrumbTitleUrlHeadingOfAccountLogoutPage"/>
-          <include name="VerfiyLogoutInAllsupportedEnvironments"/>
+          <include name="verifyLoggingoutAndBrowsingBack"/>
         </methods>
       </class> <!-- tests.LogoutTest -->
     </classes>
